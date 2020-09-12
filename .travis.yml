@@ -1,0 +1,27 @@
+language: node_js
+cache:
+  directories:
+    - node_modules
+    - ~/.npm
+node_js:
+  - '12'
+git:
+  depth: 3
+
+script:
+  - yarn test
+notifications:
+  email:
+    recipients:
+      - me@axelespinosadev.com
+    on_success: always
+    on_failure: always
+
+deploy:
+  provider: heroku
+  skip_cleanup: true
+  keep-history: true
+  api_key: $APIKEY_HEROKU
+  app: travis-ci-course
+  on:
+    repo: AxelDavid45/platzi-store-backend
